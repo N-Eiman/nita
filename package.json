@@ -4,7 +4,7 @@
   "description": "ecommerce app",
   "main": "index.js",
   "scripts": {
-    "dev": "node.index.js"
+    "dev": "node ./api/index.js"
   },
   "keywords": [
     "dps",
@@ -14,6 +14,7 @@
   "author": "\"Thakane Eiman\"",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.1"
+    "express": "^4.19.1",
+    "uuid": "^9.0.1"
   }
 }
