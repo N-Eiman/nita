@@ -15,6 +15,7 @@
   "author": "\"Thakane Eiman\"",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.1",
     "pg": "^8.11.5",
     "uuid": "^9.0.1"
