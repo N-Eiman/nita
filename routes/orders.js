@@ -1,13 +1,14 @@
 import { v4 as uuidv4 } from "uuid";
+import { pool } from "../api/utils/postgres.js";
 
 //Orders are added through the post route
-let orders= [
+/*let orders= [
   {
   orderID: 2,
   clientName :"Shona",
   deliveryMethod :"scooter",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
-}];
+}];*/
 
 
 //Get orders currently in the Database

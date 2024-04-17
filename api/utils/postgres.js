@@ -3,7 +3,7 @@ import pkg from "pg";
 dotenv.config()
 const { Pool } = pkg;
 
-export const pool = new pool({
+export const pool = new Pool({
     user: process.env.POSTGRES_USER,
     host: process.env.POSTGRES_HOST,
     database: process.env.POSTGRES_DATABASE,
