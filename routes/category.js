@@ -5,9 +5,9 @@ import { pool } from "../api/utils/postgres.js";
 let categories= [
   {
   categoryID: 1,
-  title :"Burgers",
-  desc : "none",
-  image: "burger.jpg",
+  title :"Starters",
+  desc : "various starter dishes being prepared in the kitchen, such as crispy calamari, bruschetta with fresh tomatoes and basil, and creamy spinach dip",
+  image: "starter-course.jpg",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
 }];
 
@@ -26,7 +26,7 @@ export const getCategory= (req, res) => {
   export const getCategoryById = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Category" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Category" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -56,7 +56,7 @@ export const getCategory= (req, res) => {
   export const deleteCategory = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Category" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Category" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -94,7 +94,7 @@ export const getCategory= (req, res) => {
       category.image = image;
     };
 
-    pool.query('SELECT * FROM "Category" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Category" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }

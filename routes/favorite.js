@@ -5,7 +5,7 @@ import { pool } from "../api/utils/postgres.js";
 let favorites = [
   {
   favoriteID: 2,
-  name :"Pizza",
+  username :"Pizza",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
 }];
 
@@ -24,7 +24,7 @@ export const getFavorites= (req, res) => {
   export const getFavoritesById = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Favorite" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Favorite" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -54,7 +54,7 @@ export const getFavorites= (req, res) => {
   export const deleteFavorites = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Favorite" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Favorite" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -68,7 +68,7 @@ export const getFavorites= (req, res) => {
   //Update current favorites
   export const updateFavorites = (req, res) => {
     const { id } = req.params;
-    const { favoriteID, name } = req.body;
+    const { favoriteID, username } = req.body;
     const favorite = favorites.find((favorite) => favorite.id === id);
     
     pool.query('SELECT * FROM "Favorite"', (error, results) => {
@@ -80,11 +80,11 @@ export const getFavorites= (req, res) => {
       favorites.favoriteID = favoriteID;
     };
 
-    if (name) {
-      favorites.name = name;
+    if (username) {
+      favorites.name = username;
     };
 
-    pool.query('SELECT * FROM "Favorite" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Favorite" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }

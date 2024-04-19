@@ -16,7 +16,7 @@ let users = [
 
 //Get users currently in the Database
 export const getUsers= (req, res) => {
-  pool.query('SELECT * FROM "User', (error, results) => {
+  pool.query('SELECT * FROM "User"', (error, results) => {
     if(error) {
       throw error
     }
@@ -28,7 +28,7 @@ export const getUsers= (req, res) => {
   export const getUsersById = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "User" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "User" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -58,7 +58,7 @@ export const getUsers= (req, res) => {
   export const deleteUser = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "User" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "User" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -104,7 +104,7 @@ export const getUsers= (req, res) => {
         users.address = address;
     };
 
-    pool.query('SELECT * FROM "User" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "User" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }

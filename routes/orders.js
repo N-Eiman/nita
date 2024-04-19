@@ -2,13 +2,13 @@ import { v4 as uuidv4 } from "uuid";
 import { pool } from "../api/utils/postgres.js";
 
 //Orders are added through the post route
-/*let orders= [
+let orders= [
   {
   orderID: 2,
   clientName :"Shona",
   deliveryMethod :"scooter",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
-}];*/
+}];
 
 
 //Get orders currently in the Database
@@ -25,7 +25,7 @@ export const getOrders= (req, res) => {
   export const getOrdersById = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Order" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Order" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -55,7 +55,7 @@ export const getOrders= (req, res) => {
   export const deleteOrder = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Order" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Order" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }

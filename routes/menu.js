@@ -5,15 +5,15 @@ import { pool } from "../api/utils/postgres.js";
 let menus= [
   {
   menuID: 2,
-  title :"main",
-  shortDescr : "",
-  longDescr : "",
-  price : "",
-  sellingPrice : 12.30,
-  image : "",
-  prepType : "",
-  onPromo : TRUE,
-  category : "",
+  title :"Burger",
+  shortDescr : "Chicken Burger",
+  longDescr : "Cut to a close-up shot of the Chicken Burger on a sesame seed bun, topped with fresh lettuce, juicy tomato slices, and a tangy sauce dripping down the sides",
+  price : 100,
+  sellingPrice : 100,
+  image : "chicken-burger.jpg",
+  prepType : "grill",
+  onPromo : "TRUE",
+  category : "Main-course",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
 }];
 
@@ -32,7 +32,7 @@ export const getMenus= (req, res) => {
   export const getMenusById = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Menus" WHERE id = "$1"',[id], (error, results) => {
+    pool.query('SELECT * FROM "Menus" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -62,7 +62,7 @@ export const getMenus= (req, res) => {
   export const deleteMenu = (req, res) => {
     const { id } = req.params;
 
-    pool.query('SELECT * FROM "Menu" WHERE id = "$1"',[id], (error, results) => {
+    pool.query('SELECT * FROM "Menu" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
@@ -128,7 +128,7 @@ export const getMenus= (req, res) => {
       menus.category = category;
     };
 
-    pool.query('SELECT * FROM "Menu" WHERE id = ""',[id], (error, results) => {
+    pool.query('SELECT * FROM "Menu" WHERE id = $1',[id], (error, results) => {
     if(error) {
       throw error
     }
