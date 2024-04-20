@@ -5,7 +5,7 @@ import { pool } from "../api/utils/postgres.js";
 let favorites = [
   {
   favoriteID: 2,
-  username :"Pizza",
+  username :"Bash",
   id :"d99b6355-78bc-43c0-8113-644f1ed6f859"
 }];
 
